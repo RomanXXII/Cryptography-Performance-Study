@@ -2,6 +2,14 @@ from Crypto.Cipher import AES
 from Crypto.Random import get_random_bytes
 import os, time, csv, pathlib
 
+# Measures the throughput of AES-CTR on the CPU across different message sizes
+# Pick a size (1 KiB, 16 KiB, 1 MiB, 16 MiB) and run each for ITERS
+# Generate a random key and 8-byte nonce, create a cypher, and repeatedly encrypt over the buffer
+# Then calculate throughput (size * ITERS) / elapsed time in bytes per second
+# Repeat this for each size, then log in the csv under cols algo, mode, key_bits, size_bytes, throughput_Bps
+
+# Throughput should generally increase with larger buffers (less overhead per byte).
+
 SIZES = [1024, 16384, 1<<20, 1<<24]  # 1 KiB, 16 KiB, 1 MiB, 16 MiB
 ITERS = 32
 
