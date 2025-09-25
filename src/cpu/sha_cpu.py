@@ -1,5 +1,14 @@
 import hashlib, os, time, csv, pathlib
 
+# Measure throughput for SHA256 and SHA512 on the CPU by message size
+# For each size and algorithm:
+# - Create a random buffer
+# - Warm-up with one digest
+# - Time in the loop: create a new hash object, update with the full buffer, call .digest()
+# Then compute throughput in bytes/sec
+
+# SHA-512 is typically expected to run 
+
 SIZES = [1024, 16384, 1<<20, 1<<24]
 ITERS = 64
 

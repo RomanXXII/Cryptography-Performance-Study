@@ -1,6 +1,9 @@
 from Crypto.Cipher import AES
 from Crypto.Hash import SHA256, SHA512
 
+# This ensures that everything is correct before setting any benchmarks
+
+# Sets a fixed 128-bit key with 8-bit nonce and encrypts a known 16-byte plaintext, then compares
 def verify_aes_ctr():
     key   = bytes.fromhex("2b7e151628aed2a6abf7158809cf4f3c")  # 128-bit
     nonce = bytes.fromhex("f0f1f2f3f4f5f6f7")                    # 8 bytes (CTR: nonce_len+counter_len=16)
